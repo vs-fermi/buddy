@@ -151,7 +151,7 @@ struct Chip: View {
     var action: () -> Void
     var body: some View {
         Button(action: action) {
-            Text(label).font(.system(size: 10.5, weight: .semibold, design: T.design)).foregroundColor(primary ? .white : T.fg)
+            Text(label).font(.system(size: 10.5, weight: .semibold, design: T.design)).foregroundColor(primary ? (T.name == "graphite" ? T.solid : .white) : T.fg)   // Graphite's light accent: dark text 6.7:1, white was 2.6:1
                 .padding(.horizontal, 9).padding(.vertical, 5)
                 .background(RoundedRectangle(cornerRadius: T.radius / 2).fill(primary ? T.accent : T.fg.opacity(0.08)))
         }.buttonStyle(.plain)

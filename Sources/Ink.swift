@@ -68,7 +68,7 @@ struct InkCard: View {
                 HStack(spacing: 5) {
                     Text(title).font(.system(size: 13, weight: .medium)).foregroundColor(m.tab == t ? K.ink : K.sub)
                     if K.refined {   // the count as a small chip, tinted on the open tab
-                        Text("\(count)").font(.system(size: 10.5, weight: .medium, design: .monospaced)).foregroundColor(m.tab == t ? K.ink2 : K.dim)
+                        Text("\(count)").font(.system(size: 10.5, weight: .medium, design: .monospaced)).foregroundColor(m.tab == t ? K.ink2 : K.sub)   // dim was 4.2:1 on the chip; sub is 5.6:1
                             .padding(.horizontal, 5).background(RoundedRectangle(cornerRadius: 4).fill(m.tab == t ? K.accent.opacity(0.18) : K.chip))
                     } else {
                         Text("\(count)").font(.system(size: 10.5, weight: .medium, design: .monospaced)).foregroundColor(K.sub)
@@ -198,7 +198,7 @@ struct InkCard: View {
                     HStack(spacing: 10) {
                         Circle().fill(K.warn).frame(width: 8, height: 8)
                         Text("\(w.repo ?? "?") wants your OK").font(.system(size: 13, weight: .medium)).lineLimit(1)
-                        Text(w.activity ?? "").font(.system(size: 11.5, design: .monospaced)).foregroundColor(K.dim).lineLimit(1)
+                        Text(w.activity ?? "").font(.system(size: 11.5, design: .monospaced)).foregroundColor(K.refined ? K.sub : K.dim).lineLimit(1)   // Graphite: 5.3:1 on the orange tint (dim was 4.0)
                         Spacer(minLength: 4)
                         Text("go →").font(.system(size: 11, weight: .medium, design: .monospaced)).foregroundColor(K.warn)
                     }.padding(.horizontal, 10).padding(.vertical, 8).background(RoundedRectangle(cornerRadius: 6).fill(K.warn.opacity(0.12))).padding(.bottom, 8)
