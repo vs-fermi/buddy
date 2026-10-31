@@ -177,7 +177,7 @@ struct PRBlock: View {
             }
             // one plain line: what failed (the PR's title above says what it is; Open PR has the rest)
             Text(d?.why ?? (d == nil ? "reading the CI log…" : pr.failing.isEmpty ? "a check failed: Open PR shows which" : pr.failing.joined(separator: ", ") + " failed"))
-                .font(.system(size: 11, design: T.design)).foregroundColor(T.name == "graphite" ? hex(0xf07878) : Color(red: 0.86, green: 0.36, blue: 0.36))   // Graphite's lighter card: 5.7:1 (the shared red was 4.3:1).lineLimit(2).fixedSize(horizontal: false, vertical: true)
+                .font(.system(size: 11, design: T.design)).foregroundColor(T.name == "graphite" ? hex(0xf07878) : Color(red: 0.86, green: 0.36, blue: 0.36)).lineLimit(2).fixedSize(horizontal: false, vertical: true)   // Graphite's lighter card: 5.7:1 (the shared red was 4.3:1)
             if let s = d?.session {
                 Text("Last worked on in \(s.codex ? "Codex · " : "")\((s.cwd as NSString).lastPathComponent) · \(ago(Date().timeIntervalSince(s.when))) ago")
                     .font(.system(size: 9.5, design: T.design)).foregroundColor(T.sub).lineLimit(1)
